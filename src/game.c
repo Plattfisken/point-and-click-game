@@ -9,7 +9,7 @@ int gameSetup(GameState *gameState) {
     gameState->textures[1] = LoadTexture("../assets/player-run.png");
     gameState->textures[2] = LoadTexture("../assets/finalNight.PNG");
     for(int i = 0; i < ARRAY_LENGTH(gameState->textures); ++i) {
-        if(!IsTextureReady(gameState->textures[i])) {
+        if(!IsTextureValid(gameState->textures[i])) {
             printf("failed to load texture at index %d", i);
             return 0;
         }
@@ -19,13 +19,13 @@ int gameSetup(GameState *gameState) {
     gameState->musics[0] = LoadMusicStream("../assets/Song.wav");
     gameState->musics[1] = LoadMusicStream("../assets/Lysna_haR.mp3");
     for(int i = 0; i < ARRAY_LENGTH(gameState->musics); ++i) {
-        if(!IsMusicReady(gameState->musics[i])) {
+        if(!IsMusicValid(gameState->musics[i])) {
             printf("failed to load music at index %d", i);
             return 0;
         }
     }
 
-    // initializeLevels
+    // initialize levels
     if(!initializeLevels(gameState->levels)) {
         printf("Failed to initialize levels");
         return 0;

@@ -1,2 +1,7 @@
+#!/bin/bash
+PROGRAM_NAME="Point & Click Game";
+SOURCE_FILE_NAME="main.c";
+PKG="$(pkg-config --libs --cflags raylib)"
+FLAGS="-g -O0 -Wall -Wextra "
 mkdir -p ../build;
-Clang main.c -L ../lib/ -framework CoreVideo -framework IOKit -framework Cocoa -framework GLUT -framework OpenGL ../lib/libraylib.a -o ../build/Point\ \&\ Click\ Game -g -O0 -Wall;
+clang $SOURCE_FILE_NAME $PKG $FLAGS -o ../build/"$PROGRAM_NAME" && echo "$PROGRAM_NAME";
